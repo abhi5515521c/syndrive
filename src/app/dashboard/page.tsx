@@ -287,7 +287,7 @@ export default function Dashboard() {
                   <div className="absolute bottom-10 w-[600px] h-32 bg-syn-cyan/20 blur-[80px] rounded-full" />
                   <motion.img src="/assets/sequence/ezgif-frame-001.jpg" alt="EV Vehicle" className="w-full h-full object-contain mix-blend-screen drop-shadow-[0_0_50px_rgba(59,232,255,0.1)]" animate={{ y: [0, -10, 0] }} transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }} />
                   
-                  <motion.div className="absolute top-1/4 left-1/4 flex items-center gap-3 bg-black/60 backdrop-blur-md border border-white/10 rounded-2xl p-4 shadow-xl">
+                  <motion.div className="absolute top-0 left-[15%] flex items-center gap-3 bg-black/60 backdrop-blur-md border border-white/10 rounded-2xl p-4 shadow-xl">
                     <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center"><Gauge size={20} /></div>
                     <div>
                       <span className="block text-[10px] uppercase text-white/40 tracking-wider">Speed</span>
@@ -295,7 +295,7 @@ export default function Dashboard() {
                     </div>
                   </motion.div>
 
-                  <motion.div className="absolute bottom-1/4 right-1/4 flex items-center gap-3 bg-black/60 backdrop-blur-md border border-white/10 rounded-2xl p-4 shadow-xl">
+                  <motion.div className="absolute top-0 right-[15%] flex items-center gap-3 bg-black/60 backdrop-blur-md border border-white/10 rounded-2xl p-4 shadow-xl">
                     <div className="w-10 h-10 rounded-full bg-syn-cyan/10 flex items-center justify-center"><Activity size={20} className="text-syn-cyan" /></div>
                     <div>
                       <span className="block text-[10px] uppercase text-white/40 tracking-wider">Efficiency</span>
