@@ -287,7 +287,7 @@ export default function Dashboard() {
                   <div className="absolute bottom-10 w-[600px] h-32 bg-syn-cyan/20 blur-[80px] rounded-full" />
                   <motion.img src="/assets/sequence/ezgif-frame-001.jpg" alt="EV Vehicle" className="w-full h-full object-contain mix-blend-screen drop-shadow-[0_0_50px_rgba(59,232,255,0.1)]" animate={{ y: [0, -10, 0] }} transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }} />
                   
-                  <motion.div className="absolute top-1/4 left-10 flex items-center gap-3 bg-black/60 backdrop-blur-md border border-white/10 rounded-2xl p-4 shadow-xl">
+                  <motion.div className="absolute top-1/4 left-1/4 flex items-center gap-3 bg-black/60 backdrop-blur-md border border-white/10 rounded-2xl p-4 shadow-xl">
                     <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center"><Gauge size={20} /></div>
                     <div>
                       <span className="block text-[10px] uppercase text-white/40 tracking-wider">Speed</span>
@@ -295,7 +295,7 @@ export default function Dashboard() {
                     </div>
                   </motion.div>
 
-                  <motion.div className="absolute bottom-1/4 right-0 flex items-center gap-3 bg-black/60 backdrop-blur-md border border-white/10 rounded-2xl p-4 shadow-xl">
+                  <motion.div className="absolute bottom-1/4 right-1/4 flex items-center gap-3 bg-black/60 backdrop-blur-md border border-white/10 rounded-2xl p-4 shadow-xl">
                     <div className="w-10 h-10 rounded-full bg-syn-cyan/10 flex items-center justify-center"><Activity size={20} className="text-syn-cyan" /></div>
                     <div>
                       <span className="block text-[10px] uppercase text-white/40 tracking-wider">Efficiency</span>
@@ -331,44 +331,13 @@ export default function Dashboard() {
                   </div>
                 </div>
 
-              </div>
-
-              {/* RIGHT: Map + Chargers */}
-              <div className="absolute right-10 top-32 bottom-10 w-96 flex flex-col gap-6 z-30 pointer-events-auto">
-                
-                {/* Map Preview */}
-                <div className="relative h-64 shrink-0 rounded-3xl overflow-hidden border border-white/10 shadow-2xl group cursor-pointer" onClick={() => setActiveTab('route')}>
-                  <div className="absolute inset-0 bg-[#0a0a0c]">
-                    <div className="absolute inset-0 opacity-20 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px]" />
-                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 300">
-                      <path d="M 30 260 C 80 240, 120 200, 160 180 S 250 120, 300 100 S 360 70, 380 60" fill="none" stroke="#00d6ff" strokeWidth="4" className="drop-shadow-[0_0_8px_rgba(0,214,255,0.6)]" />
-                      <circle cx="30" cy="260" r="6" fill="#fff" />
-                      <circle cx="160" cy="180" r="7" fill="#1a1a1a" stroke="#00d6ff" strokeWidth="2" />
-                      <path d="M158 176 L162 176 L160 180 L163 180 L159 186 L160 181 L157 181 Z" fill="#00d6ff" />
-                      <circle cx="380" cy="60" r="6" fill="#00d6ff" className="animate-ping" />
-                      <circle cx="380" cy="60" r="4" fill="#fff" />
-                    </svg>
-                    <div className="absolute top-[55%] left-[38%] text-[9px] text-syn-cyan/80 font-bold">{dest.mapMidLabel}</div>
-                    <div className="absolute top-[82%] left-[3%] text-[9px] text-white/60 font-bold">CHENNAI</div>
-                    <div className="absolute top-[14%] right-[3%] text-[9px] text-white/60 font-bold">{dest.mapDestLabel}</div>
-                  </div>
-                  <div className="absolute top-4 left-4"><div className="bg-black/80 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-2"><Route size={12} className="text-syn-cyan" /> {dest.mapRoute}</div></div>
-                  <div className="absolute bottom-4 left-4 right-4 bg-black/80 backdrop-blur-xl border border-white/10 p-4 rounded-2xl flex justify-between items-center">
-                    <div>
-                      <h4 className="font-bold text-sm">{dest.label}</h4>
-                      <p className="text-xs text-white/50 mt-1">{dest.etaText.split('•')[0].trim()} • <span className="text-syn-cyan">{dest.etaText.split('•')[1]?.trim()}</span></p>
-                    </div>
-                    <button className="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-syn-cyan transition-all"><ArrowRight size={18} /></button>
-                  </div>
-                </div>
-
                 {/* Nearby Chargers */}
                 <div className="flex-1 bg-gradient-to-b from-white/[0.05] to-transparent backdrop-blur-2xl border border-white/10 rounded-3xl pt-6 flex flex-col shadow-2xl overflow-hidden min-h-0">
                   <div className="flex justify-between items-end mb-4 px-6 shrink-0">
                     <h3 className="text-sm font-semibold uppercase tracking-widest text-white/50">Nearby Chargers</h3>
                     <span onClick={() => setActiveTab('charging')} className="text-xs text-syn-cyan font-semibold cursor-pointer hover:text-white transition-colors">View All ({CHARGING_STATIONS.length})</span>
                   </div>
-                  <div className="flex-1 overflow-y-auto space-y-3 px-6 pb-6">
+                  <div className="flex-1 overflow-y-auto space-y-3 px-6 pb-2">
                     {CHARGING_STATIONS.slice(0, 3).map((s) => (
                       <div key={s.id} className="bg-black/40 border border-white/5 p-4 rounded-2xl hover:border-syn-cyan/30 transition-colors cursor-pointer group">
                         <div className="flex justify-between items-start mb-2">
@@ -382,9 +351,38 @@ export default function Dashboard() {
                       </div>
                     ))}
                   </div>
-                  <div className="mt-6 pt-4 border-t border-white/10 flex items-center gap-2">
+                  <div className="mt-auto px-6 pb-6 pt-4 border-t border-white/5 shrink-0 flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-xs text-white/60">14 stations on ECR corridor</span>
+                    <span className="text-xs text-white/60">{dest.routeSummary.chargerCount}</span>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* RIGHT: Map */}
+              <div className="absolute right-10 top-32 bottom-10 w-96 flex flex-col gap-6 z-30 pointer-events-auto">
+                <div className="flex-1 relative rounded-3xl overflow-hidden border border-white/10 shadow-2xl group cursor-pointer" onClick={() => setActiveTab('route')}>
+                  <div className="absolute inset-0 bg-[#0a0a0c]">
+                    <div className="absolute inset-0 opacity-20 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:20px_20px]" />
+                    <svg className="absolute inset-0 w-full h-full" viewBox="0 0 400 600" preserveAspectRatio="xMidYMid slice">
+                      <path d="M 50 500 C 80 400, 150 300, 200 250 S 300 150, 350 100 S 380 50, 380 50" fill="none" stroke="#00d6ff" strokeWidth="6" className="drop-shadow-[0_0_12px_rgba(0,214,255,0.6)]" />
+                      <circle cx="50" cy="500" r="8" fill="#fff" />
+                      <circle cx="200" cy="250" r="9" fill="#1a1a1a" stroke="#00d6ff" strokeWidth="3" />
+                      <path d="M197 245 L203 245 L200 250 L204 250 L198 258 L200 251 L196 251 Z" fill="#00d6ff" />
+                      <circle cx="380" cy="50" r="8" fill="#00d6ff" className="animate-ping" />
+                      <circle cx="380" cy="50" r="5" fill="#fff" />
+                    </svg>
+                    <div className="absolute top-[45%] left-[40%] text-[10px] text-syn-cyan/80 font-bold tracking-wider">{dest.mapMidLabel}</div>
+                    <div className="absolute top-[85%] left-[15%] text-[10px] text-white/60 font-bold tracking-wider">CHENNAI</div>
+                    <div className="absolute top-[5%] right-[5%] text-[10px] text-white/60 font-bold tracking-wider">{dest.mapDestLabel}</div>
+                  </div>
+                  <div className="absolute top-6 left-6"><div className="bg-black/80 backdrop-blur-md border border-white/10 px-4 py-2 rounded-xl text-sm font-semibold flex items-center gap-2"><Route size={14} className="text-syn-cyan" /> {dest.mapRoute}</div></div>
+                  <div className="absolute bottom-6 left-6 right-6 bg-black/80 backdrop-blur-xl border border-white/10 p-5 rounded-2xl flex justify-between items-center group-hover:border-white/20 transition-all shadow-xl">
+                    <div>
+                      <h4 className="font-bold text-base">{dest.label}</h4>
+                      <p className="text-sm text-white/50 mt-1">{dest.etaText.split('•')[0].trim()} • <span className="text-syn-cyan">{dest.etaText.split('•')[1]?.trim()}</span></p>
+                    </div>
+                    <button className="w-12 h-12 bg-white text-black rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:bg-syn-cyan transition-all"><ArrowRight size={20} /></button>
                   </div>
                 </div>
               </div>
