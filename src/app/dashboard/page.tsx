@@ -363,12 +363,12 @@ export default function Dashboard() {
                 </div>
 
                 {/* Nearby Chargers */}
-                <div className="flex-1 bg-gradient-to-b from-white/[0.05] to-transparent backdrop-blur-2xl border border-white/10 rounded-3xl p-6 shadow-2xl overflow-y-auto min-h-0">
-                  <div className="flex justify-between items-end mb-6">
+                <div className="flex-1 bg-gradient-to-b from-white/[0.05] to-transparent backdrop-blur-2xl border border-white/10 rounded-3xl pt-6 flex flex-col shadow-2xl overflow-hidden min-h-0">
+                  <div className="flex justify-between items-end mb-4 px-6 shrink-0">
                     <h3 className="text-sm font-semibold uppercase tracking-widest text-white/50">Nearby Chargers</h3>
                     <span onClick={() => setActiveTab('charging')} className="text-xs text-syn-cyan font-semibold cursor-pointer hover:text-white transition-colors">View All ({CHARGING_STATIONS.length})</span>
                   </div>
-                  <div className="space-y-3">
+                  <div className="flex-1 overflow-y-auto space-y-3 px-6 pb-6">
                     {CHARGING_STATIONS.slice(0, 3).map((s) => (
                       <div key={s.id} className="bg-black/40 border border-white/5 p-4 rounded-2xl hover:border-syn-cyan/30 transition-colors cursor-pointer group">
                         <div className="flex justify-between items-start mb-2">
